@@ -44,6 +44,13 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Windows specific
+local os_name = vim.loop.os_uname().sysname
+if os_name == "Windows_NT" then
+  vim.cmd('set shellcmdflag=-c')
+  vim.g.nofsync = true
+end
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
