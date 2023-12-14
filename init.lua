@@ -294,6 +294,10 @@ require('lazy').setup({
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
+-- Highlight current line
+vim.o.cursorline = true
+vim.cmd [[highlight CursorLine guibg=#RRGGBB]]
+
 -- Set highlight on search
 vim.o.hlsearch = true
 
