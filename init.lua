@@ -278,7 +278,13 @@ require('lazy').setup({
 
   {
     'stevearc/oil.nvim',
-    opts = {},
+    opts = {
+      delete_to_trash = false,
+      skip_confirm_for_simple_edits = true,
+      view_options = {
+        show_hidden = true,
+      },
+    },
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },
   }
