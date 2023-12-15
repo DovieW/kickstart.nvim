@@ -198,16 +198,16 @@ require('lazy').setup({
   },
 
   {
-  'projekt0n/github-nvim-theme',
-  lazy = false, -- make sure we load this during startup if it is your main colorscheme
-  priority = 1000, -- make sure to load this before all the other start plugins
-  config = function()
-    require('github-theme').setup({
-      -- ...
-    })
+    'projekt0n/github-nvim-theme',
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      require('github-theme').setup({
+        -- ...
+      })
 
-    vim.cmd('colorscheme github_dark')
-  end,
+      vim.cmd('colorscheme github_dark_default')
+    end,
   },
 
   {
@@ -296,7 +296,7 @@ require('lazy').setup({
 
 -- Highlight current line
 vim.o.cursorline = true
-vim.cmd [[highlight CursorLine guibg=#RRGGBB]]
+vim.cmd('highlight CursorLine guibg=#181f2a') -- Set cursor line color
 
 -- Set highlight on search
 vim.o.hlsearch = true
@@ -684,8 +684,6 @@ cmp.setup {
     { name = 'path' },
   },
 }
-
-vim.cmd('colorscheme github_dark_default')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
