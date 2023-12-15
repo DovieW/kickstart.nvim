@@ -44,9 +44,10 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+local is_linux = vim.fn.has('unix') == 1 -- Is *nix
+
 -- Windows specific
-local os_name = vim.loop.os_uname().sysname
-if os_name == "Windows_NT" then
+if not is_linux then
   vim.cmd('set shellcmdflag=-c') -- Make commands work
   vim.g.nofsync = true -- Improve performance? Prevent AV from scanning?
 end
@@ -279,7 +280,7 @@ require('lazy').setup({
   {
     'stevearc/oil.nvim',
     opts = {
-      delete_to_trash = false,
+      delete_to_trash = is_linux and true or false,
       skip_confirm_for_simple_edits = true,
       view_options = {
         show_hidden = true,
