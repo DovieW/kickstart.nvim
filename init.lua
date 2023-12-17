@@ -9,7 +9,7 @@ local is_linux = vim.fn.has('unix') == 1 -- Is Linux
 -- Windows specific
 if not is_linux then
   vim.cmd('set shellcmdflag=-c') -- Make commands work
-  vim.g.nofsync = true -- Improve performance? Prevent AV from scanning?
+  vim.g.nofsync = true           -- Improve performance? Prevent AV from scanning?
 end
 
 -- [[ Install `lazy.nvim` plugin manager ]]
@@ -82,7 +82,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',    opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -160,7 +160,7 @@ require('lazy').setup({
 
   {
     'projekt0n/github-nvim-theme',
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       require('github-theme').setup({
@@ -197,13 +197,13 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',  opts = {} },
 
   -- folding
-  {
-    'kevinhwang91/nvim-ufo',
-    dependencies = 'kevinhwang91/promise-async',
-  },
+  -- {
+  --   'kevinhwang91/nvim-ufo',
+  --   dependencies = 'kevinhwang91/promise-async',
+  -- },
 
   -- Fuzzy Finder (files, lsp, etc)
   {
@@ -259,9 +259,9 @@ require('lazy').setup({
       },
       columns = {
         "icon",
-         "permissions",
-         "size",
-         "mtime",
+        "permissions",
+        "size",
+        "mtime",
       },
     },
     -- Optional dependencies
@@ -286,10 +286,37 @@ require('lazy').setup({
 vim.cmd("let g:gruvbox_material_background = 'hard'")
 
 -- Folding
-vim.o.foldlevel = 10
-vim.o.foldmethod = 'manual'
-vim.o.nofoldenable = true
-vim.o.foldlevelstart = 99
+-- vim.o.foldcolumn = '1'
+-- vim.o.foldlevel = 99
+-- vim.o.foldmethod = 'manual'
+-- vim.o.foldenable = true
+-- vim.o.foldlevelstart = 99
+-- vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+-- vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+-- vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds)
+-- vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
+-- vim.keymap.set('n', 'K', function()
+--   local winid = require('ufo').peekFoldedLinesUnderCursor()
+--   if not winid then
+--     -- choose one of coc.nvim and nvim lsp
+--     vim.fn.CocActionAsync('definitionHover') -- coc.nvim
+--     vim.lsp.buf.hover()
+--   end
+-- end)
+-- Folding using LSP???
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities.textDocument.foldingRange = {
+--   dynamicRegistration = false,
+--   lineFoldingOnly = true
+-- }
+-- local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
+-- for _, ls in ipairs(language_servers) do
+--   require('lspconfig')[ls].setup({
+--     capabilities = capabilities
+--     -- you can add other fields for setting up lsp server in this table
+--   })
+-- end
+-- require('ufo').setup()
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -299,7 +326,7 @@ vim.o.foldlevelstart = 99
 vim.o.cursorline = true
 vim.cmd('highlight CursorLine guibg=#181f2a') -- Set cursor line color
 
-vim.o.scrolloff = 4 -- Leave space when scrolling
+vim.o.scrolloff = 4                           -- Leave space when scrolling
 
 -- Set highlight on search
 vim.o.hlsearch = true
