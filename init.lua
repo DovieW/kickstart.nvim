@@ -44,7 +44,7 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-local is_linux = vim.fn.has('unix') == 1 -- Is *nix
+local is_linux = vim.fn.has('unix') == 1 -- Is Linux
 
 -- Windows specific
 if not is_linux then
@@ -217,8 +217,8 @@ require('lazy').setup({
     -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = false,
-        theme = 'onedark',
+        icons_enabled = true,
+        theme = 'auto',
         component_separators = '|',
         section_separators = '',
       },
@@ -284,6 +284,16 @@ require('lazy').setup({
       skip_confirm_for_simple_edits = true,
       view_options = {
         show_hidden = true,
+        -- This function defines what will never be shown, even when `show_hidden` is set
+        is_always_hidden = function(name, bufnr)
+          return name == ".."
+        end,
+      },
+      columns = {
+        "icon",
+         "permissions",
+         "size",
+         "mtime",
       },
     },
     -- Optional dependencies
@@ -311,6 +321,8 @@ require('lazy').setup({
 -- Highlight current line
 vim.o.cursorline = true
 vim.cmd('highlight CursorLine guibg=#181f2a') -- Set cursor line color
+
+vim.o.scrolloff = 4 -- Leave space when scrolling
 
 -- Set highlight on search
 vim.o.hlsearch = true
@@ -367,6 +379,8 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous dia
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" }) -- Oil
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
