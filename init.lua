@@ -354,6 +354,16 @@ vim.cmd("let g:gruvbox_material_background = 'hard'")
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
+-- Center screen while scrolling
+vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-f>', '<C-f>zz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'n', 'nzzzv', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'N', 'Nzzzv', { noremap = true, silent = true })
+
+-- Gitsigns
+vim.api.nvim_set_keymap('n', 'gh', ':Gitsigns next_hunk<CR>', { noremap = true, silent = true })
+
 -- Highlight current line
 vim.o.cursorline = true
 vim.cmd('highlight CursorLine guibg=#181f2a') -- Set cursor line color
