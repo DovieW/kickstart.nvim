@@ -222,14 +222,6 @@ require('lazy').setup({
 	},
 
 	'nvim-treesitter/nvim-treesitter-context',
-	{
-		"okuuva/auto-save.nvim",
-		opts = {
-			execution_message = {
-				enabled = false
-			}
-		}
-	},
 
 	{
 		'stevearc/oil.nvim',
@@ -287,6 +279,7 @@ require('lazy').setup({
 
 	require 'plugins.neoscroll',
 	require 'plugins.harpoon',
+	require 'plugins.auto-save',
 
 	{
 		'ThePrimeagen/harpoon',

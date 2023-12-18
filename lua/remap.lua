@@ -16,3 +16,13 @@ vim.api.nvim_set_keymap('n', 'gh', ':Gitsigns next_hunk<CR>', { noremap = true, 
 
 -- Paste without losing register/clipboard
 vim.keymap.set("x", "<leader>p", [["_dP]])
+
+-- Move highlighted text. Doesnt' work?
+-- vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+-- vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Replace everywhere the highlighted text
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- Make the current shell script executable
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
