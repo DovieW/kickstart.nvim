@@ -1,69 +1,14 @@
+require('set')
 require('remap')
 require('manager')
-require('set')
 require('plugins')
-
-local is_linux = vim.fn.has('unix') == 1 -- Is Linux
-
--- Windows specific
-if not is_linux then
-  vim.cmd('set shellcmdflag=-c') -- Make commands work
-  vim.g.nofsync = true           -- Improve performance? Prevent AV from scanning?
-end
-
 
 -- Set gruvbox mode thingy
 vim.cmd("let g:gruvbox_material_background = 'hard'")
 
--- Folding
--- vim.o.foldcolumn = '1'
--- vim.o.foldlevel = 99
--- vim.o.foldmethod = 'manual'
--- vim.o.foldenable = true
--- vim.o.foldlevelstart = 99
--- vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
--- vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
--- vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds)
--- vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
--- vim.keymap.set('n', 'K', function()
---   local winid = require('ufo').peekFoldedLinesUnderCursor()
---   if not winid then
---     -- choose one of coc.nvim and nvim lsp
---     vim.fn.CocActionAsync('definitionHover') -- coc.nvim
---     vim.lsp.buf.hover()
---   end
--- end)
--- Folding using LSP???
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities.textDocument.foldingRange = {
---   dynamicRegistration = false,
---   lineFoldingOnly = true
--- }
--- local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
--- for _, ls in ipairs(language_servers) do
---   require('lspconfig')[ls].setup({
---     capabilities = capabilities
---     -- you can add other fields for setting up lsp server in this table
---   })
--- end
--- require('ufo').setup()
-
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
-
--- Paste without losing register/clipboard
-vim.keymap.set("x", "<leader>p", [["_dP]])
-
--- Center screen while scrolling
-vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-f>', '<C-f>zz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'n', 'nzzzv', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'N', 'Nzzzv', { noremap = true, silent = true })
-
--- Gitsigns
-vim.api.nvim_set_keymap('n', 'gh', ':Gitsigns next_hunk<CR>', { noremap = true, silent = true })
 
 -- [[ Basic Keymaps ]]
 

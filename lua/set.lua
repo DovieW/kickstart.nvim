@@ -1,3 +1,11 @@
+-- OS specific settings
+local is_linux = vim.fn.has('unix') == 1 -- Is Linux
+-- Windows specific
+if not is_linux then
+	vim.cmd('set shellcmdflag=-c') -- Make commands work
+	vim.g.nofsync = true    -- Improve performance? Prevent AV from scanning?
+end
+
 -- Highlight current line
 vim.o.cursorline = true
 vim.cmd('highlight CursorLine guibg=#181f2a') -- Set cursor line color

@@ -250,53 +250,53 @@ require('lazy').setup({
 				-- "mtime",
 			},
 		},
-
-		-- {
-		--   "folke/noice.nvim",
-		--   event = "VeryLazy",
-		--   opts = {
-		--     lsp = {
-		--       -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-		--       override = {
-		--         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-		--         ["vim.lsp.util.stylize_markdown"] = true,
-		--         ["cmp.entry.get_documentation"] = true,
-		--       },
-		--     },
-		--     -- you can enable a preset for easier configuration
-		--     presets = {
-		--       bottom_search = true,         -- use a classic bottom cmdline for search
-		--       command_palette = true,       -- position the cmdline and popupmenu together
-		--       long_message_to_split = true, -- long messages will be sent to a split
-		--       inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-		--       lsp_doc_border = false,       -- add a border to hover docs and signature help
-		--     },
-		--   },
-		--   dependencies = {
-		--     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-		--     "MunifTanjim/nui.nvim",
-		--     -- OPTIONAL:
-		--     --   `nvim-notify` is only needed, if you want to use the notification view.
-		--     --   If not available, we use `mini` as the fallback
-		--     "rcarriga/nvim-notify",
-		--   }
-		-- },
-
 		-- Optional dependencies
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
+
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			lsp = {
+				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+				override = {
+					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+					["vim.lsp.util.stylize_markdown"] = true,
+					["cmp.entry.get_documentation"] = true,
+				},
+			},
+			-- you can enable a preset for easier configuration
+			presets = {
+				bottom_search = true, -- use a classic bottom cmdline for search
+				command_palette = true, -- position the cmdline and popupmenu together
+				long_message_to_split = true, -- long messages will be sent to a split
+				inc_rename = false, -- enables an input dialog for inc-rename.nvim
+				lsp_doc_border = false, -- add a border to hover docs and signature help
+			},
+		},
+		dependencies = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+			"rcarriga/nvim-notify",
+		}
+	},
+
+	require 'plugins.neoscroll',
+	require 'plugins.harpoon',
+
+	{
+		'ThePrimeagen/harpoon',
+		dependencies = { 'nvim-lua/plenary.nvim' }
+	},
+	{ 'mbbill/undotree' },
 
 	-- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
 	--       These are some example plugins that I've included in the kickstart repository.
 	--       Uncomment any of the lines below to enable them.
 	require 'kickstart.plugins.autoformat',
 	require 'kickstart.plugins.debug',
-
-	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-	--    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
-	--    up-to-date with whatever is in the kickstart repo.
-	--    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-	--
-	--    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-	-- { import = 'custom.plugins' },
 }, {})
