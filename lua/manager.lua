@@ -285,7 +285,19 @@ require('lazy').setup({
 		'ThePrimeagen/harpoon',
 		dependencies = { 'nvim-lua/plenary.nvim' }
 	},
+
 	{ 'mbbill/undotree' },
+
+	{
+		'mawkler/modicator.nvim',
+		init = function()
+			-- These are required for Modicator to work
+			vim.o.cursorline = true
+			vim.o.number = true
+			vim.o.termguicolors = true
+		end,
+		opts = {}
+	},
 
 	-- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
 	--       These are some example plugins that I've included in the kickstart repository.
