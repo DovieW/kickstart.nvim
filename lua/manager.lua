@@ -146,7 +146,7 @@ require('lazy').setup({
 
 	{
 		'projekt0n/github-nvim-theme',
-		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		lazy = false,  -- make sure we load this during startup if it is your main colorscheme
 		priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
 			require('github-theme').setup({
@@ -260,11 +260,11 @@ require('lazy').setup({
 			},
 			-- you can enable a preset for easier configuration
 			presets = {
-				bottom_search = true, -- use a classic bottom cmdline for search
-				command_palette = true, -- position the cmdline and popupmenu together
+				bottom_search = true,     -- use a classic bottom cmdline for search
+				command_palette = true,   -- position the cmdline and popupmenu together
 				long_message_to_split = true, -- long messages will be sent to a split
-				inc_rename = false, -- enables an input dialog for inc-rename.nvim
-				lsp_doc_border = false, -- add a border to hover docs and signature help
+				inc_rename = false,       -- enables an input dialog for inc-rename.nvim
+				lsp_doc_border = false,   -- add a border to hover docs and signature help
 			},
 		},
 		dependencies = {
@@ -305,6 +305,13 @@ require('lazy').setup({
 	-- 		require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
 	-- 	end
 	-- },
+
+	{
+		'vladdoster/remember.nvim',
+		config = function()
+			require('remember').setup {}
+		end
+	},
 
 	-- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
 	--       These are some example plugins that I've included in the kickstart repository.
