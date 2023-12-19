@@ -70,16 +70,3 @@ vim.opt.undofile = true
 
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
-
-vim.g.clipboard = {
-	name = "win32yank-wsl",
-	copy = {
-		["+"] = "/mnt/d/tools/win32yank.exe -i --crlf",
-		["*"] = "/mnt/d/tools/win32yank.exe -i --crlf",
-	},
-	paste = {
-		["+"] = "/mnt/d/tools/win32yank.exe -o --crlf",
-		["*"] = "/mnt/d/tools/win32yank.exe -o --crlf",
-	},
-	cache_enable = 0,
-}
