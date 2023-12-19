@@ -3,7 +3,7 @@ local is_linux = vim.fn.has('unix') == 1 -- Is Linux
 -- Windows specific
 if not is_linux then
 	vim.cmd('set shellcmdflag=-c') -- Make commands work
-	vim.g.nofsync = true        -- Improve performance? Prevent AV from scanning?
+	vim.g.nofsync = true          -- Improve performance? Prevent AV from scanning?
 end
 
 -- Highlight current line
@@ -70,3 +70,16 @@ vim.opt.undofile = true
 
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
+
+vim.g.clipboard = {
+	name = "win32yank-wsl",
+	copy = {
+		["+"] = "/mnt/d/tools/win32yank.exe -i --crlf",
+		["*"] = "/mnt/d/tools/win32yank.exe -i --crlf",
+	},
+	paste = {
+		["+"] = "/mnt/d/tools/win32yank.exe -o --crlf",
+		["*"] = "/mnt/d/tools/win32yank.exe -o --crlf",
+	},
+	cache_enable = 0,
+}
