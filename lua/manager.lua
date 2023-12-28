@@ -312,8 +312,26 @@ require('lazy').setup({
 			require('remember').setup {}
 		end
 	},
-	
+
 	{ 'eandrju/cellular-automaton.nvim' },
+
+	{
+		"christoomey/vim-tmux-navigator",
+		cmd = {
+			"TmuxNavigateLeft",
+			"TmuxNavigateDown",
+			"TmuxNavigateUp",
+			"TmuxNavigateRight",
+			"TmuxNavigatePrevious",
+		},
+		keys = {
+			{ "<m-h>",  "<cmd>TmuxNavigateLeft<cr>" },
+			{ "<m-j>",  "<cmd>TmuxNavigateDown<cr>" },
+			{ "<m-k>",  "<cmd>TmuxNavigateUp<cr>" },
+			{ "<m-l>",  "<cmd>TmuxNavigateRight<cr>" },
+			{ "<m-\\>", "<cmd>TmuxNavigatePrevious<cr>" },
+		},
+	},
 
 	-- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
 	--       These are some example plugins that I've included in the kickstart repository.

@@ -70,3 +70,6 @@ vim.opt.undofile = true
 
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
+
+-- Disable vim-navigator-tmux wrapping when switching panes
+vim.g.tmux_navigator_no_wrap = 1
