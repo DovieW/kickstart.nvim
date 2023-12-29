@@ -167,6 +167,7 @@ require('lazy').setup({
 			options = {
 				icons_enabled = true,
 				theme = 'auto',
+				-- theme = 'iceberg_dark',
 				component_separators = '|',
 				section_separators = '',
 			},
