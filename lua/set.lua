@@ -76,3 +76,7 @@ vim.g.tmux_navigator_no_wrap = 1
 
 -- Disable auto commenting on new line
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
+
+vim.o.hidden = true
+
+vim.o.backup = false
