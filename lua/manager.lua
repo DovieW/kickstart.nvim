@@ -227,20 +227,57 @@ require('lazy').setup({
 	{
 		'stevearc/oil.nvim',
 		opts = {
+			default_file_explorer = true,
 			delete_to_trash = is_linux and true or false,
-			skip_confirm_for_simple_edits = true,
 			view_options = {
 				show_hidden = true,
 				-- This function defines what will never be shown, even when `show_hidden` is set
 				is_always_hidden = function(name, bufnr)
-					return name == ".."
+					return name == ".." or name == ".git"
 				end,
 			},
+			-- Buffer-local options to use for oil buffers
+			buf_options = {
+				buflisted = false,
+				bufhidden = "hide",
+			},
+			-- Window-local options to use for oil buffers
+			win_options = {
+				wrap = false,
+				signcolumn = "no",
+				cursorcolumn = false,
+				foldcolumn = "0",
+				spell = false,
+				list = false,
+				conceallevel = 3,
+				concealcursor = "nvic",
+			},
+			skip_confirm_for_simple_edits = true,
+			-- Selecting a new/moved/renamed file or directory will prompt you to save changes first
+			prompt_save_on_select_new_entry = true,
+			-- Oil will automatically delete hidden buffers after this delay
+			-- You can set the delay to false to disable cleanup entirely
+			-- Note that the cleanup process only starts when none of the oil buffers are currently displayed
+			cleanup_delay_ms = 2000,
+			-- Set to true to autosave buffers that are updated with LSP willRenameFiles
+			-- Set to "unmodified" to only save unmodified buffers
+			lsp_rename_autosave = false,
+			-- Constrain the cursor to the editable parts of the oil buffer
+			-- Set to `false` to disable, or "name" to keep it on the file names
+			constrain_cursor = "editable",
 			columns = {
 				"icon",
-				"permissions",
+				-- "permissions",
 				-- "size",
 				-- "mtime",
+			},
+			sort = {
+				-- sort order can be "asc" or "desc"
+				-- see :help oil-columns to see which columns are sortable
+				-- { "mtime", "desc" },
+				-- { "mtime", "asc" },
+				{ "type", "asc" },
+				{ "name", "asc" },
 			},
 		},
 		-- Optional dependencies
