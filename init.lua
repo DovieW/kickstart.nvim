@@ -3,6 +3,18 @@ require('remap')
 require('manager')
 require('plugins')
 
+-- Open Oil on launch
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--   pattern = "*",
+--   callback = function()
+--     -- Check if Neovim is started without files or with an unnamed buffer
+--     if #vim.fn.argv() == 0 and vim.fn.argc() == 0 and vim.fn.bufname() == "" then
+--       -- Start oil
+--       vim.cmd("Oil")
+--     end
+--   end
+-- })
+
 -- Set gruvbox mode thingy
 vim.cmd("let g:gruvbox_material_background = 'hard'")
 
