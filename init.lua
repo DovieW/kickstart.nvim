@@ -7,10 +7,15 @@ require('plugins')
 -- vim.api.nvim_create_autocmd("VimEnter", {
 --   pattern = "*",
 --   callback = function()
---     -- Check if Neovim is started without files or with an unnamed buffer
+--     print("Debug: VimEnter event triggered")
+--     print("Debug: Number of arguments - " .. #vim.fn.argv())
+--     print("Debug: Argument count - " .. vim.fn.argc())
+--     print("Debug: Buffer name - '" .. vim.fn.bufname() .. "'")
 --     if #vim.fn.argv() == 0 and vim.fn.argc() == 0 and vim.fn.bufname() == "" then
---       -- Start oil
+--       print("Debug: Conditions met, launching Oil")
 --       vim.cmd("Oil")
+--     else
+--       print("Debug: Conditions not met")
 --     end
 --   end
 -- })
