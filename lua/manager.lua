@@ -51,6 +51,14 @@ require('lazy').setup({
 	},
 
 	{
+		"jay-babu/mason-null-ls.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			"nvimtools/none-ls.nvim",
+		},
+	},
+
+	{
 		-- Autocompletion
 		'hrsh7th/nvim-cmp',
 		dependencies = {

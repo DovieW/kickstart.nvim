@@ -154,7 +154,14 @@ vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc
 -- vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sf', function()
   require('telescope.builtin').find_files({
-    find_command = { 'rg', '--ignore', '--hidden', '--files', '--glob', '!.git/*' },
+    find_command = { 'rg',
+      '--ignore',
+      '--hidden',
+      '--files',
+      -- '--unrestricted'
+      '--glob',
+      '!.git/*'
+    },
     prompt_prefix = '🔍 '
   })
 end, { desc = '[S]earch [F]iles' })
@@ -231,6 +238,21 @@ require('which-key').register({
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
 require('mason').setup()
+require("mason-null-ls").setup({
+  ensure_installed = {
+    -- Opt to list sources here, when available in mason.
+    'shellcheck',
+    'black',
+    'gitleaks'
+  },
+  automatic_installation = false,
+  handlers = {},
+})
+require("null-ls").setup({
+  sources = {
+    -- Anything not supported by mason.
+  }
+})
 require('mason-lspconfig').setup()
 
 -- Enable the following language servers
@@ -244,11 +266,23 @@ require('mason-lspconfig').setup()
 local servers = {
   -- clangd = {},
   -- gopls = {},
-  -- pyright = {},
+  pyright = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
-  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-
+  bashls = {},
+  quick_lint_js = {},
+  svelte = {},
+  tsserver = {},
+  java_language_server = {},
+  dockerls = {},
+  perlnavigator = {},
+  typos_lsp = {},
+  yamlls = {},
+  marksman = {},
+  awk_ls = {},
+  -- dartls = {},
+  sqls = {},
+  docker_compose_language_service = {},
+  html = { filetypes = { 'html', 'twig', 'hbs' } },
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
