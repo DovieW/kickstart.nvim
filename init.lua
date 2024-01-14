@@ -3,22 +3,18 @@ require('remap')
 require('manager')
 require('plugins')
 
+vim.cmd('highlight CursorLine guibg=#131822') -- Set cursor line color
+
 -- Open Oil on launch
--- vim.api.nvim_create_autocmd("VimEnter", {
---   pattern = "*",
---   callback = function()
---     print("Debug: VimEnter event triggered")
---     print("Debug: Number of arguments - " .. #vim.fn.argv())
---     print("Debug: Argument count - " .. vim.fn.argc())
---     print("Debug: Buffer name - '" .. vim.fn.bufname() .. "'")
---     if #vim.fn.argv() == 0 and vim.fn.argc() == 0 and vim.fn.bufname() == "" then
---       print("Debug: Conditions met, launching Oil")
---       vim.cmd("Oil")
---     else
---       print("Debug: Conditions not met")
---     end
---   end
--- })
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = vim.schedule_wrap(function(data)
+    vim.print(vim.fn.isdirectory(data.file))
+    if data.file == "" or vim.fn.isdirectory(data.file) ~= 0 then
+      vim.print(data.file)
+      require("oil").open_float()
+    end
+  end),
+})
 
 -- Set gruvbox mode thingy
 vim.cmd("let g:gruvbox_material_background = 'hard'")
@@ -43,7 +39,7 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" }) -- Oil
+vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" }) -- Oil
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -241,9 +237,10 @@ require('mason').setup()
 require("mason-null-ls").setup({
   ensure_installed = {
     -- Opt to list sources here, when available in mason.
-    'shellcheck',
+    -- 'shellcheck',
     'black',
-    'gitleaks'
+    'gitleaks',
+    'prettier'
   },
   automatic_installation = false,
   handlers = {},
