@@ -383,6 +383,16 @@ require('lazy').setup({
 
 	{ 'nvim-pack/nvim-spectre' },
 
+	{ 'sindrets/diffview.nvim' },
+
+	{
+		"NeogitOrg/neogit",
+		dependencies = {
+			"sindrets/diffview.nvim", -- optional - Diff integration
+		},
+		config = true
+	},
+
 	-- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
 	--       These are some example plugins that I've included in the kickstart repository.
 	--       Uncomment any of the lines below to enable them.
