@@ -11,7 +11,8 @@ vim.api.nvim_create_autocmd("VimEnter", {
     vim.print(vim.fn.isdirectory(data.file))
     if data.file == "" or vim.fn.isdirectory(data.file) ~= 0 then
       vim.print(data.file)
-      require("oil").open_float()
+      -- require("oil").open_float()
+      require("oil").open()
     end
   end),
 })
@@ -39,7 +40,8 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
-vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" }) -- Oil
+-- vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" }) -- Oil
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" }) -- Oil
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
