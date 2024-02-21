@@ -58,6 +58,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
   defaults = {
+    -- preview = false,
     layout_strategy = 'vertical',
     -- layout_strategy = 'cursor',
     -- layout_strategy = 'bottom_pane',
@@ -78,7 +79,71 @@ require('telescope').setup {
       '--with-filename', -- Include filename in search results
       '--line-number',   -- Include line numbers in search results
       '--column',        -- Include column numbers in search results
-      '--smart-case'     -- Enable smart case search
+      '--smart-case',    -- Enable smart case search
+    },
+    pickers = {
+
+      live_grep = {
+        theme = "dropdown",
+        show_line = false,
+      },
+      grep_string = {
+        theme = "dropdown",
+        show_line = false,
+      },
+      find_files = {
+        theme = "dropdown",
+        previewer = false,
+        wrap_results = true,
+      },
+      buffers = {
+        theme = "dropdown",
+        previewer = false,
+        initial_mode = "normal",
+      },
+      planets = {
+        show_pluto = true,
+        show_moon = true,
+      },
+      colorscheme = {
+        -- enable_preview = true,
+      },
+      lsp_references = {
+        theme = "dropdown",
+        initial_mode = "normal",
+        show_line = false,
+      },
+      lsp_definitions = {
+        theme = "dropdown",
+        initial_mode = "normal",
+        show_line = false,
+      },
+      lsp_declarations = {
+        theme = "dropdown",
+        show_line = false,
+        initial_mode = "normal",
+      },
+      lsp_implementations = {
+        theme = "dropdown",
+        show_line = false,
+        initial_mode = "normal",
+      },
+
+      -- Default configuration for builtin pickers goes here:
+      -- picker_name = {
+      --   picker_config_key = value,
+      --   ...
+      -- }
+      -- Now the picker_config_key will be applied every time you call this
+      -- builtin picker
+    },
+    extensions = {
+      media_files = {
+        -- filetypes whitelist
+        -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+        filetypes = { "png", "webp", "jpg", "jpeg" },
+        find_cmd = "rg", -- find command (defaults to `fd`)
+      },
     },
     -- pickers = {
     --   find_files = {
