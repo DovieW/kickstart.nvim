@@ -326,6 +326,7 @@ require('lazy').setup({
 	require 'plugins.neoscroll',
 	require 'plugins.harpoon',
 	require 'plugins.auto-save',
+	require 'plugins.obsidian',
 
 	{
 		'ThePrimeagen/harpoon',
